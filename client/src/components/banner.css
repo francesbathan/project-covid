@@ -1,0 +1,13 @@
+.banner {
+  margin: 0 auto;
+  width: 90vw !important;
+  height: 30vw !important;
+  background-image: url("./bannerimage.gif") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+button:hover {
+  color: red;
+  background-color: red;
+}
