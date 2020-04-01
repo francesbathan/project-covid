@@ -40,7 +40,7 @@ function SearchBanner() {
         />
       </div>
       <div>
-        <Button variant="contained" color="red" className={classes.searchBtn}>
+        <Button variant="contained" className={classes.searchBtn}>
           Search
         </Button>
       </div>

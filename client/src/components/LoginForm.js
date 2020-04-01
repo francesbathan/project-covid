@@ -9,8 +9,8 @@ function LoginForm() {
   const [err, setErr] = useState("");
 
   function onSubmitHandler(event) {
-    // event.preventDefault();
-    console.log("blyat");
+    event.preventDefault();
+
     axios
       .post(
         "http://localhost:8000/api/admin/login",
