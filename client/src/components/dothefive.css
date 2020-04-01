@@ -1,0 +1,22 @@
+.hand {
+  width: 15vw;
+  margin-top: 2vw;
+  margin-bottom: 0vw;
+}
+.num {
+  color: red;
+  font-weight: bold;
+  margin-right: 1vw;
+}
+.subtitle {
+  font-weight: bold;
+  margin-right: 1vw;
+}
+.whologo {
+  width: 10vw;
+  margin-right: 1vw;
+}
+.psa {
+  margin-top: 43vh;
+  margin-right: 1vw;
+}

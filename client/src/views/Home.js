@@ -1,13 +1,15 @@
 import React from "react";
 
 import SearchBanner from "../components/SearchBanner";
-import Header from "../components/Header";
+import DoTheFive from "../components/DoTheFive";
+import BriefInfo from "../components/BriefInfo";
 
 function Home() {
   return (
     <>
-      <Header />
       <SearchBanner />
+      <DoTheFive />
+      <BriefInfo />
     </>
   );
 }

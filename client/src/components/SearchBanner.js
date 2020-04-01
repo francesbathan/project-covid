@@ -4,7 +4,7 @@ import "./banner.css";
 
 const useStyles = makeStyles(theme => ({
   inputField: {
-    marginTop: "40vh",
+    marginTop: "30vh",
     width: "40vw",
     backgroundColor: "white",
     borderRadius: "40px"

@@ -1,0 +1,27 @@
+.resources {
+  text-decoration: none !important;
+  font-size: 11pt;
+  color: rgb(255, 133, 133);
+}
+.resources:hover {
+  text-decoration: none !important;
+  font-size: 11pt;
+  color: red;
+}
+.about19 {
+  font-size: 11pt;
+  padding: 3vh 3vw;
+  color: white;
+}
+.source {
+  font-size: 8pt;
+  font-style: oblique;
+}
+.who {
+  text-decoration: none !important;
+  color: rgb(255, 133, 133);
+}
+.who:hover {
+  text-decoration: none !important;
+  color: red;
+}

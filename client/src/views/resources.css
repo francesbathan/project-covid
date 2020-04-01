@@ -1,0 +1,17 @@
+.resourceList {
+  text-align: center;
+  margin-bottom: 10vh;
+}
+.organizations {
+  margin-bottom: 0px;
+}
+.links {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+.links:hover {
+  color: darkred;
+  text-decoration: none;
+  cursor: pointer;
+}

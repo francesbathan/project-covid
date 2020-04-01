@@ -1,0 +1,22 @@
+.img {
+  width: 18vw;
+  margin: auto 1vw;
+}
+.footerLink {
+  display: block;
+  text-decoration: none !important;
+  color: red;
+  margin: 5px auto;
+}
+.footerLink:hover {
+  display: block;
+  text-decoration: none !important;
+  color: darkred;
+  margin: 5px auto;
+}
+.img {
+  cursor: pointer;
+}
+.aboutUs {
+  font-size: 8pt;
+}

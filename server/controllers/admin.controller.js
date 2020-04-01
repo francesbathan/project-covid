@@ -18,7 +18,7 @@ module.exports = {
         });
         res.json({ status: "Success", token });
       })
-      .catch((err = res.status(400).json(err)));
+      .catch(err => res.status(400).json(err));
   },
 
   async login(req, res) {
@@ -28,14 +28,15 @@ module.exports = {
 
     try {
       const admin = await Admin.findOne({ username });
+
       if (user == null) {
         throw new Error(errorMessage);
       }
       const result = await bcrypt.compare(password, admin.password);
+
       if (result == false) {
         throw new Error(errorMessage);
       }
-
       const token = jwt.sign(
         {
           id: admin._id,
