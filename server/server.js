@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 require("./routes/admin.routes")(app);
+require("./routes/testcenter.routes")(app);
+require("./routes/places.routes")(app);
 
 app.listen(8000, () => {
   console.log("Now live at Port 8000.");

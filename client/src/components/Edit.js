@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Paper, TextField, makeStyles, Grid, Button } from "@material-ui/core";
 import "./submitcenter.css";
@@ -26,8 +26,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function SubmitCenterForm() {
+function Edit({ id }) {
   const classes = useStyles();
+
+  const [testingCenter, setTestingCenter] = useState({});
 
   const [hospital, setHospital] = useState("");
   const [addressOne, setAddressOne] = useState("");
@@ -40,22 +42,61 @@ function SubmitCenterForm() {
   const [comments, setComments] = useState("");
   const [errors, setErrors] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8000/api/testcenters/" + id,
+        {
+          hospital,
+          addressOne,
+          addressTwo,
+          city,
+          state,
+          zip,
+          name,
+          email,
+          comments
+        },
+        {
+          withCredentials: true
+        }
+      )
+      .then(res => {
+        setHospital(res.data.hospital);
+        setAddressOne(res.data.addressOne);
+        setAddressTwo(res.data.addressTwo);
+        setCity(res.data.city);
+        setState(res.data.state);
+        setZip(res.data.zip);
+        setName(res.data.name);
+        setEmail(res.data.email);
+        setComments(res.data.comments);
+      })
+      .catch(errr => console.log(errr));
+  }, []);
+
   function onSubmitHandler(event) {
     event.preventDefault();
 
     axios
-      .post("http://localhost:8000/api/testcenters/new", {
-        hospital,
-        addressOne,
-        addressTwo,
-        city,
-        state,
-        zip,
-        name,
-        email,
-        comments
-      })
-      .then(() => navigate("/thank-you"))
+      .put(
+        "http://localhost:8000/api/testcenters/" + id + "/update",
+        {
+          hospital,
+          addressOne,
+          addressTwo,
+          city,
+          state,
+          zip,
+          name,
+          email,
+          comments
+        },
+        {
+          withCredentials: true
+        }
+      )
+      .then(() => navigate("/dashboard"))
       .catch(err => {
         const errorResponse = err.response.data.errors;
         console.log("Error response:", errorResponse);
@@ -70,6 +111,7 @@ function SubmitCenterForm() {
 
   return (
     <Paper className={classes.paper}>
+      <h2>Update Testing Center</h2>
       <form onSubmit={onSubmitHandler}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -81,6 +123,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={hospital}
               onChange={e => setHospital(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={6}>
@@ -92,6 +137,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={addressOne}
               onChange={e => setAddressOne(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={6}>
@@ -103,6 +151,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={addressTwo}
               onChange={e => setAddressTwo(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={6}>
@@ -114,6 +165,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={city}
               onChange={e => setCity(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={3}>
@@ -125,6 +179,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={state}
               onChange={e => setState(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={3}>
@@ -136,6 +193,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={zip}
               onChange={e => setZip(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
           <Grid item xs={6}>
@@ -147,6 +207,10 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={name}
               onChange={e => setName(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
+              disabled
             />
           </Grid>
           <Grid item xs={6}>
@@ -158,6 +222,10 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={email}
               onChange={e => setEmail(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
+              disabled
             />
           </Grid>
           <Grid item xs={12}>
@@ -169,6 +237,9 @@ function SubmitCenterForm() {
               inputProps={{ className: classes.inputField }}
               value={comments}
               onChange={e => setComments(e.target.value)}
+              InputLabelProps={{
+                shrink: true
+              }}
             />
           </Grid>
         </Grid>
@@ -180,15 +251,10 @@ function SubmitCenterForm() {
           ))}
         </div>
         <Button type="submit" className={classes.submitBtn} variant="contained">
-          Submit
+          Update
         </Button>
       </form>
-      <p className="disclaimer">
-        *Required fields
-        <br />
-        Submissions are subject to approval.
-      </p>
     </Paper>
   );
 }
-export default SubmitCenterForm;
+export default Edit;

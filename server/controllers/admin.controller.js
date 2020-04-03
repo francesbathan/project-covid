@@ -29,7 +29,7 @@ module.exports = {
     try {
       const admin = await Admin.findOne({ username });
 
-      if (user == null) {
+      if (admin == null) {
         throw new Error(errorMessage);
       }
       const result = await bcrypt.compare(password, admin.password);

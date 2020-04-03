@@ -54,7 +54,35 @@ function Donate() {
           <Grid item xs={4} className={classes.categories}>
             <Paper className={classes.category}>
               <div>
-                <h2>FOOD</h2>
+                <h2>COMMUNITY SUPPORT</h2>
+                <Paper className={classes.org}>
+                  <h3 className="organizations">
+                    <a
+                      className="links"
+                      href="https://www.coreresponse.org/covid19"
+                    >
+                      CORE Response
+                    </a>
+                  </h3>
+                  <p>
+                    CORE is working in partnership with the city of Los Angeles
+                    to promote safe and efficient COVID-19 testing to vulnerable
+                    populations in Los Angeles. The drive-through testing
+                    clinics will be available to those who pre-qualify as high
+                    risk.
+                  </p>
+                  <Button
+                    variant="contained"
+                    className={classes.donateBtn}
+                    onClick={() =>
+                      navigate(
+                        "https://donate.coreresponse.org/give/277229/#!/donation/checkout"
+                      )
+                    }
+                  >
+                    Donate
+                  </Button>
+                </Paper>
                 <Paper className={classes.org}>
                   <h3 className="organizations">
                     <a
@@ -232,7 +260,7 @@ function Donate() {
           <Grid item xs={4} className={classes.categories}>
             <Paper className={classes.category}>
               <div>
-                <h2>AID FOR HOSPITALS</h2>
+                <h2>HOSPITAL & MEDICAL PERSONNEL</h2>
                 <Paper className={classes.org}>
                   <h3 className="organizations">
                     <a

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, Grid, Paper } from "@material-ui/core";
 import logo from "../assets/logo.png";
 import "./footer.css";
+import { navigate } from "@reach/router";
 
 function Footer() {
   const useStyles = makeStyles(theme => ({
@@ -25,26 +26,33 @@ function Footer() {
     <Paper className={classes.paper}>
       <Grid container spacing={3}>
         <Grid item xs={6} className={classes.footerText}>
-          <a className="footerLink" href="/">
+          <p className="footerLink" onClick={() => navigate("/")}>
             Home
-          </a>
-          <a className="footerLink" href="/testing-centers">
+          </p>
+          <p
+            className="footerLink"
+            onClick={() => navigate("/testing-centers")}
+          >
             Testing Centers
-          </a>
-          <a className="footerLink" href="/submit">
+          </p>
+          <p className="footerLink" onClick={() => navigate("/submit")}>
             Submit A Testing Center
-          </a>
-          <a className="footerLink" href="/resources">
+          </p>
+          <p className="footerLink" onClick={() => navigate("/resources")}>
             Resources
-          </a>
-          <a className="footerLink" href="/donate">
+          </p>
+          <p className="footerLink" onClick={() => navigate("/donate")}>
             Where To Donate
-          </a>
+          </p>
         </Grid>
         <Grid item xs={5}>
-          <a href="/">
-            <img src={logo} className="img" alt="logo" />
-          </a>
+          <img
+            src={logo}
+            className="img"
+            alt="logo"
+            onClick={() => navigate("/")}
+          />
+
           <p className="aboutUs">
             This is an ongoing collaborative effort to make finding a testing
             center near you easier if you have possible symptoms of COVID-19.

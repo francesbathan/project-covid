@@ -40,6 +40,10 @@ function LoginForm() {
     },
     h2: {
       marginTop: "10vh"
+    },
+    errorMsg: {
+      color: "red",
+      fontSize: "9pt"
     }
   }));
 
@@ -48,7 +52,7 @@ function LoginForm() {
   return (
     <>
       <h2 className={classes.h2}>Admin Login</h2>
-      {err && <p className="errorMsg">{err}</p>}
+      {err && <p className={classes.errorMsg}>{err}</p>}
       <form onSubmit={onSubmitHandler}>
         <div>
           <TextField
@@ -74,11 +78,7 @@ function LoginForm() {
             InputProps={{ className: classes.input }}
           />
         </div>
-        <Button
-          onClick={() => onSubmitHandler()}
-          variant="contained"
-          className={classes.loginBtn}
-        >
+        <Button type="submit" variant="contained" className={classes.loginBtn}>
           Login
         </Button>
       </form>

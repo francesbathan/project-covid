@@ -1,8 +1,17 @@
 import React from "react";
-import SearchBanner from "../components/SearchBanner";
+import SearchBar from "../components/searchBar";
+import TestCenterList from "../components/TestCenterList";
+
+import Main from "./main";
 
 function TestCenter() {
-  return <SearchBanner />;
+  return (
+    <>
+      <SearchBar />
+      <Main />
+      <TestCenterList />
+    </>
+  );
 }
 
 export default TestCenter;

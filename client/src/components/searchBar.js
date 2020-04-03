@@ -1,13 +1,12 @@
 import React from "react";
 import { navigate } from "@reach/router";
 import { Button, makeStyles, TextField } from "@material-ui/core";
-import "./banner.css";
+import "./search.css";
 
 const useStyles = makeStyles(theme => ({
   inputField: {
-    marginTop: "30vh",
+    marginTop: "5vh",
     width: "40vw",
-    backgroundColor: "white",
     borderRadius: "40px"
   },
   colorChange: {
@@ -19,40 +18,38 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "red",
     borderRadius: "40px",
     color: "white",
-    marginTop: "27vh",
-    marginLeft: "auto",
-    padding: "2vh 5vw",
-    fontSize: "13pt"
+    marginTop: "2vh",
+    marginLeft: "auto"
   }
 }));
 
-function SearchBanner() {
+function SearchBar() {
   const classes = useStyles();
 
   return (
-    <div className="banner">
-      {/* <div>
+    <div>
+      <div>
         <TextField
           className={classes.inputField}
           variant="outlined"
-          label="Search for a testing center near you"
+          label="Search by zip or city"
           type="search"
           id="standard-search"
           color="secondary"
           InputProps={{ className: classes.colorChange }}
         />
-      </div> */}
+      </div>
       <div>
         <Button
           variant="contained"
           className={classes.searchBtn}
           onClick={() => navigate("/testing-centers")}
         >
-          Search for a testing center near you
+          Search
         </Button>
       </div>
     </div>
   );
 }
 
-export default SearchBanner;
+export default SearchBar;

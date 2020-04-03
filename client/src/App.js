@@ -12,6 +12,11 @@ import LoginPage from "./views/LoginPage";
 import ApproveRej from "./views/ApproveRej";
 import Footer from "./views/Footer";
 
+import Submitted from "./components/submitted";
+import Edit from "./components/Edit";
+// import TestingTable from "./components/TestingTable";
+// import ApprovedTesting from "./components/ApprovedTesting";
+
 function App() {
   return (
     <div className="App">
@@ -24,6 +29,8 @@ function App() {
         <Donate path="/donate" />
         <LoginPage path="/admin" />
         <ApproveRej path="/dashboard" />
+        <Submitted path="/thank-you" />
+        <Edit path="/edit/:id" />
       </Router>
       <Footer />
     </div>
