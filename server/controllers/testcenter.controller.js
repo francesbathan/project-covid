@@ -27,7 +27,7 @@ module.exports.submitTestCenter = (req, res) => {
     .catch(err => res.status(400).json(err));
 };
 
-module.exports.allTestCenters = (_, res) => {
+module.exports.allTestCenters = (req, res) => {
   TestCenter.find()
     .then(testCenter => res.json(testCenter))
     .catch(err => res.json(err));

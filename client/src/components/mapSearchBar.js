@@ -3,10 +3,33 @@ import PlacesAutoComplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import { TextField, makeStyles, Button } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+  inputField: {
+    marginTop: "2vh",
+
+    width: "40vw",
+    borderRadius: "40px"
+  },
+  colorChange: {
+    color: "red",
+    borderColor: "red",
+    borderRadius: "40px"
+  },
+  searchBtn: {
+    backgroundColor: "red",
+    borderRadius: "40px",
+    color: "white",
+    margin: "2vh auto 5vh auto"
+  }
+}));
 
 const MapSearchBar = ({ coordinatesHandler }) => {
   const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+
+  const classes = useStyles();
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
@@ -34,20 +57,12 @@ const MapSearchBar = ({ coordinatesHandler }) => {
             <h2>Find testing centers near you</h2>
             {/* <p>Latitude:{coordinates.lat}</p>
                     <p>Longitude:{coordinates.lng}</p> */}
-            <input
-              style={{
-                boxSizing: `border-box`,
-                border: `1px solid transparent`,
-                width: `240px`,
-                height: `32px`,
-                padding: `0 12px`,
-                borderRadius: `3px`,
-                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                fontSize: `14px`,
-                outline: `none`,
-                textOverflow: `ellipses`
-              }}
-              {...getInputProps({ placeholder: "Your city" })}
+            <TextField
+              className={classes.inputField}
+              variant="outlined"
+              color="secondary"
+              label="Search by zip or city"
+              {...getInputProps({ placeholder: "Search by zip or city" })}
             />
             <div>
               {loading && <div>Loading...</div>}
@@ -68,7 +83,14 @@ const MapSearchBar = ({ coordinatesHandler }) => {
           </div>
         )}
       </PlacesAutoComplete>
-      <button onClick={submitHandler}>Search</button>
+      <Button
+        variant="contained"
+        className={classes.searchBtn}
+        onClick={submitHandler}
+        type="search"
+      >
+        Search
+      </Button>
     </>
   );
 };

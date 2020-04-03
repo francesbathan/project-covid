@@ -8,25 +8,15 @@ import { Paper, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    margin: "2vh 2vw",
-    padding: "1vh 2vw 3vh 2vw"
-  },
-  table: {
-    border: "1px solid lightgray",
-    fontSize: "10pt",
-    margin: "auto"
-  },
-  label: {
-    border: "1px solid lightgray",
-    padding: "1vh 1vw",
-    margin: 0,
-    textAlign: "center"
+    margin: "15vh 2vw",
+    padding: "1vh 2vw 5vh 2vw"
   },
   content: {
-    border: "1px solid lightgray",
-    padding: "1vh 1vw",
-    margin: 0,
-    textAlign: "left"
+    fontSize: "11pt",
+    margin: "1vh auto"
+  },
+  info: {
+    margin: "4vh auto"
   }
 }));
 
@@ -35,11 +25,11 @@ function TestingTable() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/testcenters", { withCredentials: true })
+      .get("http://localhost:8000/api/alltestcenters")
       .then(res => {
         setTestingCenter(res.data);
       })
-      .catch(() => navigate("/admin"));
+      .catch(console.log);
   }, []);
 
   const classes = useStyles();
@@ -52,36 +42,20 @@ function TestingTable() {
     <>
       <Paper className={classes.paper}>
         <h2>Testing Centers</h2>
-        <table className={classes.table}>
-          <thead>
-            <tr>
-              <th className={classes.label}>Testing Center Name</th>
-              <th className={classes.label}>Address 1</th>
-              <th className={classes.label}>Address 2</th>
-              <th className={classes.label}>City</th>
-              <th className={classes.label}>State</th>
-              <th className={classes.label}>Zip</th>
-            </tr>
-          </thead>
-          {approved.map((testingCenter, i) => {
-            return (
-              <tbody key={i}>
-                <tr>
-                  <td className={classes.content}>{testingCenter.hospital}</td>
-                  <td className={classes.content}>
-                    {testingCenter.addressOne}
-                  </td>
-                  <td className={classes.content}>
-                    {testingCenter.addressTwo}
-                  </td>
-                  <td className={classes.content}>{testingCenter.city}</td>
-                  <td className={classes.content}>{testingCenter.state}</td>
-                  <td className={classes.content}>{testingCenter.zip}</td>
-                </tr>
-              </tbody>
-            );
-          })}
-        </table>
+
+        {approved.map((testingCenter, i) => {
+          return (
+            <div key={i} className={classes.info}>
+              <h4 className={classes.content}>{testingCenter.hospital}</h4>
+              <p className={classes.content}>
+                {testingCenter.addressOne},{testingCenter.addressTwo}
+              </p>
+              <p className={classes.content}>
+                {testingCenter.city}, {testingCenter.state} {testingCenter.zip}
+              </p>
+            </div>
+          );
+        })}
       </Paper>
     </>
   );
